@@ -41,6 +41,10 @@
       responses: 
         '.*Do you want to configure integrated DNS .*': "no"
         '.*Continue to configure the system with these .*': "yes" 
+  - name: Init ipa-server 
+    expect:
+    command: ipa user-add --first=test --last=New --cn=New Test --displayname=Test --initials=T.N. --homedir=/home/test --shell=test --user-auth-type=password --password 
+    
 - hosts: ldapclient
   become: yes
   tasks:
