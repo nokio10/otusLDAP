@@ -30,7 +30,7 @@
         - python-setuptools
       state: present
   - name: Install pexpect
-    pip3:
+    pip:
       name: pexpect
   - name: Init ipa-server 
     expect: 
