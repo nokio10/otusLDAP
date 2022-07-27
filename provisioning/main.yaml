@@ -29,7 +29,7 @@
       name:
         - python3-pip
   - name: Install pexpect
-    pip:
+    pip3:
       name: pexpect
   - name: Init ipa-server 
     expect: 
