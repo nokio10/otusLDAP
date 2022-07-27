@@ -21,6 +21,11 @@
         '.*Do you want to configure integrated DNS .*': "no"
         '.*Please provide a realm name .*': "OTUSLDAP.TEST"
         '.*Continue to configure the system with these values? .*': "yes" 
+  - name: start ipa
+    systemd:
+      name: ipa
+      enabled: yes
+      state: started
 - hosts: ldapclient
   become: yes
   tasks:
