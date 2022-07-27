@@ -51,6 +51,7 @@
       command: ipa user-add --first=test --last=New --cn=New Test --displayname=Test --initials=T.N. --homedir=/home/test --shell=test --user-auth-type=password --password 
       responses:
         '.*User login.*': ""
+        '.*Password.*': "12345678"
         '.*Enter Password again to.*': "12345678"
 - hosts: ldapclient
   become: yes
