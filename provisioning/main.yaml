@@ -6,6 +6,7 @@
     yum: 
       name: ipa-server
       state: present
+      update_cache: true
       
 - hosts: ldapclient
   become: yes
@@ -14,3 +15,4 @@
     yum: 
       name: freeipa-client
       state: present    
+      update_cache: true
