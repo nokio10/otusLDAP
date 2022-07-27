@@ -5,7 +5,7 @@
   - name: install packages
     yum: 
       name: ipa-server
-      state: latest
+      state: present
       
 - hosts: ldapclient
   become: yes
@@ -13,4 +13,4 @@
   - name: install packages
     yum: 
       name: freeipa-client
-      state: latest    
+      state: present    
