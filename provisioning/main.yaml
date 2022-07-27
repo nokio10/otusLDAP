@@ -23,6 +23,14 @@
         '192.168.50.10 ldapserver.otusldap.test'
         '192.168.50.11 ldapclient.otusldap.test'
       state: present
+  - name: Install pip
+    yum:
+      update_cache: yes
+      name:
+        - python3-pip
+  - name: Install pexpect
+    pip:
+      name: pexpect
   - name: Init ipa-server 
     expect: 
       command: ipa-server-install -a 12345678 -p 87654321 -n otusldap.test --hostname=ldapserver.otusldap.test --no-host-dns --ip-address=192.168.50.10 -r OTUSLDAP.TEST
