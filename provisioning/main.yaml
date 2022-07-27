@@ -1,0 +1,16 @@
+---
+- hosts: ldapserver
+  become: yes
+  tasks:
+  - name: install packages
+    yum: 
+      name: ipa-server
+      state: latest
+      
+- hosts: ldapclient
+  become: yes
+  tasks:
+  - name: install packages
+    yum: 
+      name: freeipa-client
+      state: latest    
