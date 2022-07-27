@@ -22,8 +22,8 @@
     lineinfile:
       dest: /etc/hosts
       line: |
-        '192.168.50.10 ldapserver.otusldap.test'
-        '192.168.50.11 ldapclient.otusldap.test'
+        192.168.50.10 ldapserver.otusldap.test
+        192.168.50.11 ldapclient.otusldap.test
       state: present
   - name: Install pip
     yum:
