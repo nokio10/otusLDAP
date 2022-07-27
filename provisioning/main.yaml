@@ -9,7 +9,9 @@
       state: stopped
   - name: install packages
     yum: 
-      name: ipa-server
+      name: 
+        - ipa-server
+        - epel-release
       state: present
       update_cache: true
   - name: update packages
