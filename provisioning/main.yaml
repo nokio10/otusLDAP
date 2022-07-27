@@ -39,7 +39,7 @@
       command: ipa-server-install -a 12345678 -p 87654321 -n otusldap.test --hostname=ldapserver.otusldap.test --no-host-dns --ip-address=192.168.50.10 -r OTUSLDAP.TEST
       responses: 
         '.*Do you want to configure integrated DNS .*': "no"
-        '.*Continue to configure the system with these values? .*': "yes" 
+        '.*Continue to configure the system with these .*': "yes" 
 - hosts: ldapclient
   become: yes
   tasks:
