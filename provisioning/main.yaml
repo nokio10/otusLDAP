@@ -41,10 +41,17 @@
       responses: 
         '.*Do you want to configure integrated DNS .*': "no"
         '.*Continue to configure the system with these .*': "yes" 
+  - name: admin login
+    expect:
+      command: kinit admin
+      responses:
+        '.*Password for.*': "87654321"
   - name: Init ipa-server 
     expect:
-    command: ipa user-add --first=test --last=New --cn=New Test --displayname=Test --initials=T.N. --homedir=/home/test --shell=test --user-auth-type=password --password 
-    
+      command: ipa user-add --first=test --last=New --cn=New Test --displayname=Test --initials=T.N. --homedir=/home/test --shell=test --user-auth-type=password --password 
+      responses:
+        '.*User login.*': ""
+        '.*Enter Password again to.*': "12345678"
 - hosts: ldapclient
   become: yes
   tasks:
