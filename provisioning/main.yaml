@@ -7,6 +7,10 @@
       name: ipa-server
       state: present
       update_cache: true
+  - name: update packages
+    yum: 
+      name: nss*
+      state: latest
   - name: Edit /etc/hosts
     lineinfile:
       dest: /etc/hosts
@@ -19,7 +23,6 @@
       command: ipa-server-install -a 12345678 -p 87654321 -n otusldap.test --hostname=ldapserver.otusldap.test --no-host-dns --ip-address=192.168.50.10 -r OTUSLDAP.TEST
       responses: 
         '.*Do you want to configure integrated DNS .*': "no"
-        '.*Please provide a realm name .*': "OTUSLDAP.TEST"
         '.*Continue to configure the system with these values? .*': "yes" 
   - name: start ipa
     systemd:
