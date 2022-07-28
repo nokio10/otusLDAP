@@ -65,4 +65,4 @@
       mode: 600
       remote_src: yes
   - name: add ssh key to ldap
-    shell: ipa user-mod alice --sshpubkey="$(cat /home/ldapclient/.ssh/id_rsa.pub)"
+    shell: ipa user-mod ldapclient --sshpubkey="$(cat /home/ldapclient/.ssh/id_rsa.pub)"
