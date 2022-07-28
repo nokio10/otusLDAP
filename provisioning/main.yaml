@@ -62,6 +62,10 @@
 - hosts: ldapclient
   become: yes
   tasks:
+  - name: Set a hostname 
+    hostname:
+      name: ldapclient.otusldap.test
+      use: systemd
   - name: install packages
     yum: 
       name: 
@@ -86,10 +90,6 @@
       name: chronyd
       enabled: no
       state: stopped
-  - name: Set a hostname 
-    hostname:
-      name: ldapclient.otusldap.test
-      use: systemd
   - name: Init ipa-client 
     expect:
       command: ipa-client-install --mkhomedir --domain=otusldap.test --server=ldapserver.otusldap.test --realm=OTUSLDAP.TEST --password=12345678
