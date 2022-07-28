@@ -64,9 +64,16 @@
   tasks:
   - name: install packages
     yum: 
-      name: freeipa-client
+      name: 
+        - freeipa-client
+        - epel-release
       state: present    
       update_cache: true
+  - name: Install pip
+    yum:
+      name: 
+        - python-pip
+        - python-setuptools      
   - name: Edit /etc/hosts
     lineinfile:
       dest: /etc/hosts
