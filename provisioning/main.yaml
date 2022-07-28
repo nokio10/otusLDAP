@@ -46,9 +46,9 @@
     expect:
       command: ssh-keygen -C ldapclient@otusldap.test
       responses:
+        '.*Enter file in which to.*': ""  
         '.*Enter passphrase.*': ""
         '.*Enter same passphrase.*': ""   
-        '.*Enter file in which to.*': ""  
   - name: kinit ldapclient
     expect:
       command: kinit ldapclient
