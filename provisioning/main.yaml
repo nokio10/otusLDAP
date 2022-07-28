@@ -4,9 +4,13 @@
   tasks:
   - name: stop chronyd
     systemd:
-      name: chronyd
+      name: 
+        - chronyd
+        - firewalld
       enabled: no
       state: stopped
+  - name: add firewalld rules
+    shell: firewall-cmd --permanent --add-port={80/tcp,443/tcp,389/tcp,636/tcp,88/tcp,464/tcp,53/tcp,88/udp,464/udp,53/udp,123/udp}
   - name: Set a hostname 
     hostname:
       name: ldapserver.otusldap.test
@@ -88,7 +92,9 @@
       state: present
   - name: stop chronyd
     systemd:
-      name: chronyd
+      name: 
+        - chronyd
+        - firewalld
       enabled: no
       state: stopped
   - name: Init ipa-client 
