@@ -130,7 +130,7 @@
         '.*Enter it.*': "12345678" 
   - name: create /home/ldapclient/.ssh/
     file: 
-      path: /src/www
+      path: /home/ldapclient/.ssh/
       state: directory
   - name: copy ssh key     
     copy:
