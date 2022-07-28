@@ -48,6 +48,7 @@
       responses:
         '.*Enter passphrase.*': ""
         '.*Enter same passphrase.*': ""   
+        '.*Enter file in which to.*': ""  
   - name: kinit ldapclient
     expect:
       command: kinit ldapclient
