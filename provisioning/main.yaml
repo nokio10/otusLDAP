@@ -71,6 +71,8 @@
       name: 
         - freeipa-client
         - epel-release
+        - nscd 
+        - nslcd
       state: present    
       update_cache: true
   - name: Install pip
@@ -95,8 +97,10 @@
       state: stopped
   - name: Init ipa-client 
     expect:
-      command: ipa-client-install --mkhomedir --domain=otusldap.test --server=ldapserver.otusldap.test --realm=OTUSLDAP.TEST --password=12345678
+      command: ipa-client-install --mkhomedir --domain=otusldap.test --server=ldapserver.otusldap.test --realm=OTUSLDAP.TEST
       responses:
         '.*Proceed with fixed values and no DNS.*': "yes"
         '.*Continue to configure the system with these.*': "yes"
+        '.*User authorized to enroll.*': "admin"   
+        '.*Password for.*': "12345678"   
         '.*Do you want to download the CA cert.*': "yes"   
