@@ -77,7 +77,10 @@
     yum:
       name: 
         - python-pip
-        - python-setuptools      
+        - python-setuptools     
+  - name: Install pexpect
+    pip:
+      name: pexpect
   - name: Edit /etc/hosts
     lineinfile:
       dest: /etc/hosts
