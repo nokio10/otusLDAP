@@ -48,7 +48,7 @@
         '.*Password for.*': "87654321"
   - name: Init ipa-server 
     expect:
-      command: ipa user-add --first=test --last=New --cn=New Test --displayname=Test --initials=T.N. --homedir=/home/test --shell=test --user-auth-type=password --password 
+      command: ipa user-add --first=ldap --last=client --cn="Ldap Client" --displayname=ldapclient --initials=L.C. --homedir=/home/ldapclient --shell=ldapclient --user-auth-type=password --password 
       responses:
         '.*User login.*': ""
         '.*Password.*': "12345678"
