@@ -71,8 +71,6 @@
       name: 
         - freeipa-client
         - epel-release
-        - nscd 
-        - nslcd
       state: present    
       update_cache: true
   - name: Install pip
