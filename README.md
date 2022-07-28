@@ -202,5 +202,39 @@ ldapclient                 : ok=14   changed=13   unreachable=0    failed=0    s
 Проверяю работу после установки. 
 
 ```
-
+root@ubuntu:~/otusLDAP# vagrant ssh ldapclient
+Last login: Thu Jul 28 14:49:35 2022 from 10.0.2.2
+[vagrant@ldapclient ~]$ hostname
+ldapclient.otusldap.test
+[vagrant@ldapclient ~]$ sudo -i
+[root@ldapclient ~]# ssh ldapclient@ldapclient.otusldap.test
+Last failed login: Thu Jul 28 14:50:08 UTC 2022 from 192.168.50.11 on ssh:notty
+There was 1 failed login attempt since the last successful login.
+-sh-4.2$
+[root@ldapclient ~]# kinit admin
+Password for admin@OTUSLDAP.TEST:
+[root@ldapclient ~]# ipa user-find ldapclient
+--------------
+1 user matched
+--------------
+  User login: ldapclient
+  First name: ldap
+  Last name: client
+  Home directory: /home/ldapclient
+  Login shell: /bin/sh
+  Principal name: ldapclient@OTUSLDAP.TEST
+  Principal alias: ldapclient@OTUSLDAP.TEST
+  Email address: ldapclient@otusldap.test
+  UID: 762200001
+  GID: 762200001
+  SSH public key fingerprint: SHA256:hMZYT6kzoAZkvZsGKrVaCJIjj87bX9HYIsUdWaxCim4 ldapclient@otusldap.test (ssh-rsa)
+  Account disabled: False
+----------------------------
+Number of entries returned 1
+----------------------------
+[root@ldapclient ~]# kinit ldapclient
+Password for ldapclient@OTUSLDAP.TEST:
+[root@ldapclient ~]# kinit ldapclient
+Password for ldapclient@OTUSLDAP.TEST:
+kinit: Password incorrect while getting initial credentials
 ```
