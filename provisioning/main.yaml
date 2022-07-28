@@ -61,6 +61,13 @@
       name: freeipa-client
       state: present    
       update_cache: true
+  - name: Edit /etc/hosts
+    lineinfile:
+      dest: /etc/hosts
+      line: |
+        192.168.50.10 ldapserver.otusldap.test
+        192.168.50.11 ldapclient.otusldap.test
+      state: present
   - name: stop chronyd
     systemd:
       name: chronyd
@@ -70,4 +77,10 @@
     hostname:
       name: ldapclient.otusldap.test
       use: systemd
-   
+  - name: Init ipa-client 
+    expect:
+      command: ipa-client-install --mkhomedir --domain=otusldap.test --server=ldapserver.otusldap.test --realm=OTUSLDAP.TEST --password=12345678
+      responses:
+        '.*Proceed with fixed values and no DNS.*': "yes"
+        '.*Continue to configure the system with these.*': "yes"
+        '.*Do you want to download the CA cert.*': "yes"   
