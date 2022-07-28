@@ -7,6 +7,10 @@
       name: chronyd
       enabled: no
       state: stopped
+  - name: Set a hostname 
+    hostname:
+      name: ldapserver.otusldap.test
+      use: systemd
   - name: install packages
     yum: 
       name: 
@@ -53,6 +57,8 @@
         '.*User login.*': "ldapclient"
         '.*Password.*': "12345678"
         '.*Enter Password again to.*': "12345678"
+        
+        
 - hosts: ldapclient
   become: yes
   tasks:
