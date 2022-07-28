@@ -52,7 +52,7 @@
         '.*Password for.*': "12345678"
   - name: Add user ldapclient
     expect:
-      command: ipa user-add --first=ldap --last=client --cn="Ldap Client" --displayname=ldapclient --initials=L.C. --homedir=/home/ldapclient --shell=ldapclient --user-auth-type=password --password 
+      command: ipa user-add --first=ldap --last=client --cn="Ldap Client" --displayname=ldapclient --initials=L.C. --homedir=/home/ldapclient --shell=/bin/bash --user-auth-type=password --password 
       responses:
         '.*User login.*': "ldapclient"
         '.*Password.*': "12345678"
