@@ -50,7 +50,7 @@
     expect:
       command: ipa user-add --first=ldap --last=client --cn="Ldap Client" --displayname=ldapclient --initials=L.C. --homedir=/home/ldapclient --shell=ldapclient --user-auth-type=password --password 
       responses:
-        '.*User login.*': ""
+        '.*User login.*': "ldapclient"
         '.*Password.*': "12345678"
         '.*Enter Password again to.*': "12345678"
 - hosts: ldapclient
