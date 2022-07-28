@@ -45,7 +45,7 @@
     expect:
       command: kinit admin
       responses:
-        '.*Password for.*': "87654321"
+        '.*Password for.*': "12345678"
   - name: Init ipa-server 
     expect:
       command: ipa user-add --first=ldap --last=client --cn="Ldap Client" --displayname=ldapclient --initials=L.C. --homedir=/home/ldapclient --shell=ldapclient --user-auth-type=password --password 
