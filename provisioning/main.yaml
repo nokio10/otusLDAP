@@ -128,6 +128,10 @@
         '.*Password for.*': "12345678"
         '.*Enter new.*': "12345678"        
         '.*Enter it.*': "12345678" 
+  - name: create /home/ldapclient/.ssh/
+    file: 
+      path: /src/www
+      state: directory
   - name: copy ssh key     
     copy:
       src: /root/.ssh/
