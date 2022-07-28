@@ -237,4 +237,13 @@ Password for ldapclient@OTUSLDAP.TEST:
 [root@ldapclient ~]# kinit ldapclient
 Password for ldapclient@OTUSLDAP.TEST:
 kinit: Password incorrect while getting initial credentials
+
+[root@ldapclient ~]# ssh ldapclient@ldapserver.otusldap.test
+Could not chdir to home directory /home/ldapclient: No such file or directory
+-sh-4.2$ logout
+Connection to ldapserver.otusldap.test closed.
+[root@ldapclient ~]# ssh ldapclient@192.168.50.10
+Last login: Thu Jul 28 14:56:05 2022 from 192.168.50.11
+Could not chdir to home directory /home/ldapclient: No such file or directory
+-sh-4.2$
 ```
