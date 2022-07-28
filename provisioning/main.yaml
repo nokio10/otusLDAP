@@ -42,11 +42,9 @@
         '.*User authorized to enroll.*': "admin"   
         '.*Password for.*': "12345678"   
         '.*Do you want to download the CA cert.*': "yes"   
-  - name: sudo ldapclient
-    shell: sudo -i -u ldapclient
   - name: Init ipa-client 
     expect:
-      command: ssh-keygen -C ldapclient@otusldap.test
+      command: sudo -i -u ldapclient | ssh-keygen -C ldapclient@otusldap.test
       responses:
         '.*Enter passphrase.*': ""
         '.*Enter same passphrase.*': ""    
