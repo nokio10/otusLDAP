@@ -42,10 +42,26 @@
         '.*User authorized to enroll.*': "admin"   
         '.*Password for.*': "12345678"   
         '.*Do you want to download the CA cert.*': "yes"   
-  - name: Init ipa-client 
+  - name: ssh-keygen
     expect:
-      command: sudo -i -u ldapclient | ssh-keygen -C ldapclient@otusldap.test
+      command: ssh-keygen -C ldapclient@otusldap.test
       responses:
         '.*Enter passphrase.*': ""
-        '.*Enter same passphrase.*': ""    
-    
+        '.*Enter same passphrase.*': ""   
+  - name: kinit ldapclient
+    expect:
+      command: kinit ldapclient
+      responses:
+        '.*Password for.*': "12345678"
+        '.*Enter new.*': "12345678"        
+        '.*Enter it.*': "12345678" 
+  - name: copy ssh key     
+    copy:
+      src: /root/.ssh/
+      dest: /home/ldapclient/.ssh/
+      owner: ldapclient
+      group: ldapclient
+      mode: 600
+      remote_src: yes
+  - name: add ssh key to ldap
+    shell: ipa user-mod alice --sshpubkey="$(cat /home/ldapclient/.ssh/id_rsa.pub)"
